@@ -1,12 +1,11 @@
 import adsk.core
 
 from .commands import SampleCommand1, SampleCommand2, SamplePaletteCommand, SampleCustomEvent, SampleDocumentEvents
-from .apper.FusionApp import FusionApp
-# from .apper.Fusion360Utilities import get_std_out_file, get_std_err_file, get_log_file
+from .apper import apper
 
 import sys
 
-my_app = FusionApp('SampleApp', "MyOrganization", False)
+my_app = apper.FusionApp('SampleApp', "MyOrganization", False)
 
 # std_err_file = get_std_err_file(my_app.name)
 # std_out_file = get_std_out_file(my_app.name)
@@ -57,7 +56,7 @@ SamplePaletteCommand.SamplePaletteShowCommand(
         'command_promoted': True,
         'palette_id': 'sample_palette',
         'palette_name': 'Sample Fusion 360 HTML Palette',
-        'palette_html_file_url': './lib/commands/palette_html/demo.html',
+        'palette_html_file_url': './commands/palette_html/demo.html',
         'palette_is_visible': True,
         'palette_show_close_button': True,
         'palette_is_resizable': True,

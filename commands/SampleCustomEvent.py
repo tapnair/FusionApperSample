@@ -4,18 +4,17 @@ import adsk.fusion
 import json
 import time
 
-from ..apper.Fusion360AppEvents import Fusion360CustomThread
-from ..apper.Fusion360Utilities import AppObjects
+from ..apper import apper
 
 
-class SampleCustomEvent1(Fusion360CustomThread):
+class SampleCustomEvent1(apper.Fusion360CustomThread):
 
     def custom_event_received(self, event_dict):
-        ao = AppObjects()
+        ao = apper.AppObjects()
         ao.ui.messageBox(str(event_dict))
 
     def run_in_thread(self, thread, event_id):
-        ao = AppObjects()
+        ao = apper.AppObjects()
 
         # Every five seconds fire a custom event, passing a random number.
         for i in range(3):

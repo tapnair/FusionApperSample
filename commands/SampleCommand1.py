@@ -2,14 +2,17 @@ import adsk.core
 import adsk.fusion
 import adsk.cam
 
-from ..apper.Fusion360Utilities import AppObjects
-from ..apper.Fusion360CommandBase import Fusion360CommandBase
+# Import the entire apper package
+from ..apper import apper
+
+# Alternatively you can import a specific function or class
+from ..apper.apper import AppObjects
 
 
 # Class for a Fusion 360 Command
 # Place your program logic here
 # Delete the line that says "pass" for any method you want to use
-class SampleCommand1(Fusion360CommandBase):
+class SampleCommand1(apper.Fusion360CommandBase):
 
     # Run whenever a user makes any change to a value or selection in the addin UI
     # Commands in here will be run through the Fusion processor and changes will be reflected in  Fusion graphics area
@@ -34,6 +37,5 @@ class SampleCommand1(Fusion360CommandBase):
 
     # Run when the user selects your command icon from the Fusion 360 UI
     # Typically used to create and display a command dialog box
-    # The following is a basic sample of a dialog UI
     def on_create(self, command: adsk.core.Command, inputs: adsk.core.CommandInputs):
         pass

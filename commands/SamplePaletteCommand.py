@@ -4,13 +4,11 @@ import adsk.cam
 
 import json
 
-from ..apper.Fusion360Utilities import AppObjects
-from ..apper.Fusion360CommandBase import Fusion360CommandBase
-from ..apper.PaletteCommandBase import PaletteCommandBase
+from ..apper import apper
 
 
 # Class for a Fusion 360 Palette Command
-class SamplePaletteShowCommand(PaletteCommandBase):
+class SamplePaletteShowCommand(apper.PaletteCommandBase):
 
     # Run when user executes command in UI, useful for handling extra tasks on palette like docking
     def on_palette_execute(self, palette: adsk.core.Palette):
@@ -28,7 +26,7 @@ class SamplePaletteShowCommand(PaletteCommandBase):
         msg += '    Command: {}\n    arg1: {}\n    arg2: {}'.format(html_args.action, data['arg1'], data['arg2'])
 
         # Display Message
-        ao = AppObjects()
+        ao = apper.AppObjects()
         ao.ui.messageBox(msg)
 
     # Handle any extra cleanup when user closes palette here
@@ -37,7 +35,7 @@ class SamplePaletteShowCommand(PaletteCommandBase):
 
 
 # This is a standard Fusion Command that will send data to the palette
-class SamplePaletteSendCommand(Fusion360CommandBase):
+class SamplePaletteSendCommand(apper.Fusion360CommandBase):
 
     def __init__(self, name, fusion_app, options):
         super().__init__(name, fusion_app, options)
@@ -50,7 +48,7 @@ class SamplePaletteSendCommand(Fusion360CommandBase):
     def on_execute(self, command: adsk.core.Command, command_inputs: adsk.core.CommandInputs, args, input_values):
 
         # Get Reference to Palette
-        ao = AppObjects()
+        ao = apper.AppObjects()
         palette = ao.ui.palettes.itemById(self.palette_id)
 
         # Get input value from string input

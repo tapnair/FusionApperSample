@@ -5,17 +5,10 @@ import traceback
 import json
 import time
 
-from ..apper.Fusion360AppEvents import Fusion360DocumentEvent
+from ..apper import apper
 
 
-class SampleDocumentEvent1(Fusion360DocumentEvent):
-    # def __init__(self, event_id, event_type):
-    #     ao = AppObjects()
-    #     ao.ui.messageBox("test")
-    #     try:
-    #         super().__init__(event_id, event_type)
-    #     except:
-    #         ao.ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
+class SampleDocumentEvent1(apper.Fusion360DocumentEvent):
 
     def document_event_received(self, event_args, document):
         app = adsk.core.Application.cast(adsk.core.Application.get())
@@ -24,7 +17,7 @@ class SampleDocumentEvent1(Fusion360DocumentEvent):
         app.userInterface.messageBox(msg)
 
 
-class SampleDocumentEvent2(Fusion360DocumentEvent):
+class SampleDocumentEvent2(apper.Fusion360DocumentEvent):
 
     def document_event_received(self, event_args, document):
         app = adsk.core.Application.cast(adsk.core.Application.get())
