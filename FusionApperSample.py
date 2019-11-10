@@ -1,6 +1,9 @@
+import traceback
+
 import adsk.core
 
-from .commands import SampleCommand1, SampleCommand2, SamplePaletteCommand, SampleCustomEvent, SampleDocumentEvents
+from .commands import SampleCommand1, SampleCommand2, SamplePaletteCommand, \
+    SampleCustomEvent, SampleDocumentEvents, SampleWorkspaceEvents
 from .apper import apper
 
 import sys
@@ -79,12 +82,19 @@ my_app.add_command(
         'palette_id': 'sample_palette',
     }
 )
-
-SampleCustomEvent.SampleCustomEvent1("message_system", my_app)
-
 app = adsk.core.Application.cast(adsk.core.Application.get())
-SampleDocumentEvents.SampleDocumentEvent1("open_event", app.documentActivated, my_app)
-SampleDocumentEvents.SampleDocumentEvent2("close_event", app.documentClosed, my_app)
+ui = app.userInterface
+try:
+
+    my_app.add_custom_event("message_system", SampleCustomEvent.SampleCustomEvent1)
+
+    my_app.add_document_event("open_event", app.documentActivated, SampleDocumentEvents.SampleDocumentEvent1)
+    my_app.add_document_event("close_event", app.documentClosed, SampleDocumentEvents.SampleDocumentEvent2)
+
+    my_app.add_workspace_event("close_event", ui.workspaceActivated, SampleWorkspaceEvents.SampleWorkspaceEvent1)
+except:
+    if ui:
+        ui.messageBox('Load failed: {}'.format(traceback.format_exc()))
 
 # Set to True to display various useful messages when debugging your app
 debug = False

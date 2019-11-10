@@ -37,8 +37,8 @@ class SamplePaletteShowCommand(apper.PaletteCommandBase):
 # This is a standard Fusion Command that will send data to the palette
 class SamplePaletteSendCommand(apper.Fusion360CommandBase):
 
-    def __init__(self, name, fusion_app, options):
-        super().__init__(name, fusion_app, options)
+    def __init__(self, name, options):
+        super().__init__(name, options)
 
         # Pass in the palette_id as extra data in command definition
         # A generally useful technique to make commands more re-usable
