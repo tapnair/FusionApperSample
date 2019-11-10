@@ -11,10 +11,9 @@ my_app = apper.FusionApp('SampleApp', "MyOrganization", False)
 # std_out_file = get_std_out_file(my_app.name)
 # sys.stdout = open(std_out_file, 'w')
 # sys.stderr = open(std_err_file, 'w')
-
-SampleCommand1.SampleCommand1(
+my_app.add_command(
     'Sample Command 1',
-    my_app,
+    SampleCommand1.SampleCommand1,
     {
         'cmd_description': 'Hello World!',
         'cmd_id': 'sample1',
@@ -27,9 +26,9 @@ SampleCommand1.SampleCommand1(
     }
 )
 
-SampleCommand2.SampleCommand2(
+my_app.add_command(
     'Sample Command 2',
-    my_app,
+    SampleCommand2.SampleCommand2,
     {
         'cmd_description': 'A simple example of a Fusion 360 Command with various inputs',
         'cmd_id': 'sample2',
@@ -42,9 +41,9 @@ SampleCommand2.SampleCommand2(
     }
 )
 
-SamplePaletteCommand.SamplePaletteShowCommand(
+my_app.add_command(
     'Sample Palette Command - Show',
-    my_app,
+    SamplePaletteCommand.SamplePaletteShowCommand,
     {
         'cmd_description': 'Fusion Demo Palette Description',
         'cmd_id': 'palette_show',
@@ -65,9 +64,9 @@ SamplePaletteCommand.SamplePaletteShowCommand(
     }
 )
 
-SamplePaletteCommand.SamplePaletteSendCommand(
+my_app.add_command(
     'Sample Palette Command - Send',
-    my_app,
+    SamplePaletteCommand.SamplePaletteSendCommand,
     {
         'cmd_description': 'Send data from a regular Fusion 360 command to a palette',
         'cmd_id': 'palette_send',
