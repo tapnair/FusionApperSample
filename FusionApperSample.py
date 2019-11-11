@@ -6,23 +6,17 @@ from .commands import SampleCommand1, SampleCommand2, SamplePaletteCommand, \
     SampleCustomEvent, SampleDocumentEvents, SampleWorkspaceEvents
 from .apper import apper
 
-import sys
-
 my_app = apper.FusionApp('SampleApp', "MyOrganization", False)
 
-# std_err_file = get_std_err_file(my_app.name)
-# std_out_file = get_std_out_file(my_app.name)
-# sys.stdout = open(std_out_file, 'w')
-# sys.stderr = open(std_err_file, 'w')
 my_app.add_command(
     'Sample Command 1',
     SampleCommand1.SampleCommand1,
     {
         'cmd_description': 'Hello World!',
-        'cmd_id': 'sample1',
+        'cmd_id': 'sample_cmd_1',
         'workspace': 'FusionSolidEnvironment',
         'toolbar_tab_id': 'Sample Tab',
-        'toolbar_panel_id': 'Commands3',
+        'toolbar_panel_id': 'Commands',
         'cmd_resources': 'demo_icons',
         'command_visible': True,
         'command_promoted': True,
@@ -34,10 +28,10 @@ my_app.add_command(
     SampleCommand2.SampleCommand2,
     {
         'cmd_description': 'A simple example of a Fusion 360 Command with various inputs',
-        'cmd_id': 'sample2',
+        'cmd_id': 'sample_cmd_2',
         'workspace': 'FusionSolidEnvironment',
         'toolbar_tab_id': 'Sample Tab',
-        'toolbar_panel_id': 'Commands3',
+        'toolbar_panel_id': 'Commands',
         'cmd_resources': 'demo_icons',
         'command_visible': True,
         'command_promoted': False,
@@ -49,7 +43,7 @@ my_app.add_command(
     SamplePaletteCommand.SamplePaletteShowCommand,
     {
         'cmd_description': 'Fusion Demo Palette Description',
-        'cmd_id': 'palette_show',
+        'cmd_id': 'sample_palette_show',
         'workspace': 'FusionSolidEnvironment',
         'toolbar_tab_id': 'Sample Tab',
         'toolbar_panel_id': 'Palette',
@@ -58,7 +52,7 @@ my_app.add_command(
         'command_promoted': True,
         'palette_id': 'sample_palette',
         'palette_name': 'Sample Fusion 360 HTML Palette',
-        'palette_html_file_url': './commands/palette_html/demo.html',
+        'palette_html_file_url': 'palette_html/demo.html',
         'palette_is_visible': True,
         'palette_show_close_button': True,
         'palette_is_resizable': True,
@@ -72,7 +66,7 @@ my_app.add_command(
     SamplePaletteCommand.SamplePaletteSendCommand,
     {
         'cmd_description': 'Send data from a regular Fusion 360 command to a palette',
-        'cmd_id': 'palette_send',
+        'cmd_id': 'sample_palette_send',
         'workspace': 'FusionSolidEnvironment',
         'toolbar_tab_id': 'Sample Tab',
         'toolbar_panel_id': 'Palette',
@@ -86,12 +80,12 @@ app = adsk.core.Application.cast(adsk.core.Application.get())
 ui = app.userInterface
 try:
 
-    my_app.add_custom_event("message_system", SampleCustomEvent.SampleCustomEvent1)
+    my_app.add_custom_event("sample_message_system", SampleCustomEvent.SampleCustomEvent1)
 
-    my_app.add_document_event("open_event", app.documentActivated, SampleDocumentEvents.SampleDocumentEvent1)
-    my_app.add_document_event("close_event", app.documentClosed, SampleDocumentEvents.SampleDocumentEvent2)
+    my_app.add_document_event("sample_open_event", app.documentActivated, SampleDocumentEvents.SampleDocumentEvent1)
+    my_app.add_document_event("sample_close_event", app.documentClosed, SampleDocumentEvents.SampleDocumentEvent2)
 
-    my_app.add_workspace_event("close_event", ui.workspaceActivated, SampleWorkspaceEvents.SampleWorkspaceEvent1)
+    my_app.add_workspace_event("sample_workspace_event", ui.workspaceActivated, SampleWorkspaceEvents.SampleWorkspaceEvent1)
 except:
     if ui:
         ui.messageBox('Load failed: {}'.format(traceback.format_exc()))
