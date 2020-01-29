@@ -1,3 +1,20 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#  SampleCommand1.py
+#
+#  This file is a component of ApperSample.
+#
+#  Copyright (c) 2020 by Patrick Rainsberry.
+#  :license: Apache2, see LICENSE for more details.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#  SampleCommand1.py
+#
+#  This file is a component of ApperSample.
+#
+#  Copyright (c) 2020 by Patrick Rainsberry.
+#  :license: Apache2, see LICENSE for more details.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 import adsk.core
 import apper
