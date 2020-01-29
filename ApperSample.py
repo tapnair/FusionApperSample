@@ -32,9 +32,10 @@ try:
     from .commands.SampleDocumentEvents import SampleDocumentEvent1, SampleDocumentEvent2
     from .commands.SampleWorkspaceEvents import SampleWorkspaceEvent1
     from .commands.SampleWebRequestEvent import SampleWebRequestOpened
+    from .commands.SampleCommandEvents import SampleCommandEvent
 
     # Create our addin definition object
-    my_addin = apper.FusionApp('ApperSample ', "Autodesk ", False)
+    my_addin = apper.FusionApp(config.app_name, config.company_name, False)
 
     # Creates a basic Hello World message box on execute
     my_addin.add_command(
@@ -42,7 +43,7 @@ try:
         SampleCommand1,
         {
             'cmd_description': 'Hello World!',
-            'cmd_id': 'sample_cmd_1',
+            'cmd_id': 'apper_sample_cmd_1',
             'workspace': 'FusionSolidEnvironment',
             'toolbar_panel_id': 'Commands',
             'cmd_resources': 'command_icons',
@@ -57,7 +58,7 @@ try:
         SampleCommand2,
         {
             'cmd_description': 'A simple example of a Fusion 360 Command with various inputs',
-            'cmd_id': 'sample_cmd_2',
+            'cmd_id': 'apper_sample_cmd_2',
             'workspace': 'FusionSolidEnvironment',
             'toolbar_panel_id': 'Commands',
             'cmd_resources': 'command_icons',
@@ -72,7 +73,7 @@ try:
         SamplePaletteShowCommand,
         {
             'cmd_description': 'Shows the Fusion 360 Demo Palette',
-            'cmd_id': 'sample_palette_show',
+            'cmd_id': 'apper_sample_palette_show',
             'workspace': 'FusionSolidEnvironment',
             'toolbar_panel_id': 'Palette',
             'cmd_resources': 'palette_icons',
@@ -95,7 +96,7 @@ try:
         SamplePaletteSendCommand,
         {
             'cmd_description': 'Send data from a regular Fusion 360 command to a palette',
-            'cmd_id': 'sample_palette_send',
+            'cmd_id': 'apper_sample_palette_send',
             'workspace': 'FusionSolidEnvironment',
             'toolbar_panel_id': 'Palette',
             'cmd_resources': 'palette_icons',
@@ -109,22 +110,25 @@ try:
     ui = app.userInterface
 
     # Uncomment as necessary.  Running all at once can be overwhelming :)
-    # my_addin.add_custom_event("sample_message_system", SampleCustomEvent1)
-    #
-    # my_addin.add_document_event("sample_open_event", app.documentActivated, SampleDocumentEvent1)
-    # my_addin.add_document_event("sample_close_event", app.documentClosed, SampleDocumentEvent2)
-    #
-    # my_addin.add_workspace_event("sample_workspace_event", ui.workspaceActivated, SampleWorkspaceEvent1)
 
-    # my_addin.add_web_request_event("sample_web_request_event", app.openedFromURL, SampleWebRequestOpened)
+    my_addin.add_custom_event("apper_sample_message_system", SampleCustomEvent1)
+
+    # my_addin.add_document_event("apper_sample_open_event", app.documentActivated, SampleDocumentEvent1)
+    # my_addin.add_document_event("apper_sample_close_event", app.documentClosed, SampleDocumentEvent2)
+    #
+    # my_addin.add_workspace_event("apper_sample_workspace_event", ui.workspaceActivated, SampleWorkspaceEvent1)
+
+    # my_addin.add_web_request_event("apper_sample_web_request_event", app.openedFromURL, SampleWebRequestOpened)
+
+    # my_addin.add_command_event("apper_sample_command_event", app.userInterface.commandStarting, SampleCommandEvent)
+
 
 except:
     app = adsk.core.Application.get()
     ui = app.userInterface
-    if ui:
-        ui.messageBox('Initialization Failed: {}'.format(traceback.format_exc()))
+    ui.messageBox('Initialization Failed: {}'.format(traceback.format_exc()))
 
-# Set to True to display various useful messages when debugging your app
+
 debug = False
 
 
