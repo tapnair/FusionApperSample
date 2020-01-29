@@ -1,0 +1,11 @@
+{
+    "autodeskProduct": "Fusion360",
+    "type": "addin",
+    "id": "0b2383af-8dd2-4cde-8271-1f8c961a654a",
+    "author": "Patrick Rainsberry",
+    "description": "Generic Fusion 360 addin leveraging apper as a submodule",
+    "version": "0.1.0",
+    "runOnStartup": false,
+    "supportedOS": "windows|mac",
+    "editEnabled": true
+}

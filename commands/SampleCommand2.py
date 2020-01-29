@@ -3,10 +3,10 @@ import adsk.fusion
 import adsk.cam
 
 # Import the entire apper package
-from ..apper import apper
+import apper
 
 # Alternatively you can import a specific function or class
-from ..apper.apper import AppObjects
+from apper import AppObjects
 
 
 # Class for a Fusion 360 Command
@@ -69,12 +69,18 @@ class SampleCommand2(apper.Fusion360CommandBase):
     # Run when the user selects your command icon from the Fusion 360 UI
     # Typically used to create and display a command dialog box
     # The following is a basic sample of a dialog UI
+
     def on_create(self, command: adsk.core.Command, inputs: adsk.core.CommandInputs):
 
-        # Create a default value using a string
         ao = AppObjects()
+
+        # Create a default value using a string
         default_value = adsk.core.ValueInput.createByString('1.0 in')
+
+        # Get teh user's current units
         default_units = ao.units_manager.defaultLengthUnits
+
+        # Create a value input.  This will respect units and user defined equation input.
         inputs.addValueInput('value_input_id', '*Sample* Value Input', default_units, default_value)
 
         # Other Input types

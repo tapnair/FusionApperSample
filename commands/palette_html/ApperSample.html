@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Demo Palette</title>
+        <title>ApperSample</title>
+        <p>Generic Fusion 360 addin leveraging apper as a submodule</p>
     </head>
     <body>
         <p id='p1'>Click the button below or use the "Send info to HTML" command in the ADD-INS panel.</p>
@@ -22,11 +23,11 @@
 
         window.fusionJavaScriptHandler = {handle: function(action, data){
             try {
-                if (action == 'send') {
+                if (action === 'send') {
 					// Update a paragraph with the data passed in.
 					document.getElementById('message').innerHTML = data;
 				}
-				else if (action == 'debugger') {
+				else if (action === 'debugger') {
                     debugger;
 				}
 				else {
