@@ -108,7 +108,7 @@ try:
     #
     # my_addin.add_workspace_event("sample_workspace_event", ui.workspaceActivated, SampleWorkspaceEvent1)
 
-    my_addin.add_web_request_event("sample_web_request_event", app.openedFromURL, SampleWebRequestOpened)
+    # my_addin.add_web_request_event("sample_web_request_event", app.openedFromURL, SampleWebRequestOpened)
 
 except:
     app = adsk.core.Application.get()
