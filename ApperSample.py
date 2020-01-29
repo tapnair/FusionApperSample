@@ -16,6 +16,15 @@
 #  :license: Apache2, see LICENSE for more details.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#  ApperSample.py
+#
+#  This file is a component of ApperSample.
+#
+#  Copyright (c) 2020 by Patrick Rainsberry.
+#  :license: Apache2, see LICENSE for more details.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 import os
 import sys
 import adsk.core
@@ -132,7 +141,7 @@ except:
     app = adsk.core.Application.get()
     ui = app.userInterface
     if ui:
-        ui.messageBox('Initialization: {}'.format(traceback.format_exc()))
+        ui.messageBox('Initialization Failed: {}'.format(traceback.format_exc()))
 
 # Set to True to display various useful messages when debugging your app
 debug = False
