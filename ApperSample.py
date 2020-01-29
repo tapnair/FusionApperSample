@@ -100,6 +100,7 @@ try:
     app = adsk.core.Application.cast(adsk.core.Application.get())
     ui = app.userInterface
 
+    # Uncomment as necessary.  Running all at once can be overwhelming :)
     # my_addin.add_custom_event("sample_message_system", SampleCustomEvent1)
     #
     # my_addin.add_document_event("sample_open_event", app.documentActivated, SampleDocumentEvent1)
