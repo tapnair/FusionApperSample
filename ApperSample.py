@@ -111,7 +111,7 @@ try:
 
     # Uncomment as necessary.  Running all at once can be overwhelming :)
 
-    my_addin.add_custom_event("apper_sample_message_system", SampleCustomEvent1)
+    # my_addin.add_custom_event("apper_sample_message_system", SampleCustomEvent1)
 
     # my_addin.add_document_event("apper_sample_open_event", app.documentActivated, SampleDocumentEvent1)
     # my_addin.add_document_event("apper_sample_close_event", app.documentClosed, SampleDocumentEvent2)
